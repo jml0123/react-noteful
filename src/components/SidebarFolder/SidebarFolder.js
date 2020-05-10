@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export default class SidebarFolder extends Component {
     render() {
         return(
-            <Link to={`/folder/${this.props.id}`}>
+            <NavLink to={`/folder/${this.props.id}`} activeClassName="folder--selected">
                 <div className="folder-container">
                     <p>{this.props.name}</p>
                 </div>
-            </Link>
+            </NavLink>
         )
     }
 }

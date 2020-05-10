@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-export default class Sidebar extends Component {
+export default class Main extends Component {
     render() {
         return(
-        <div className="sidebar-container">
+        <div className="notes-collection">
         </div>
     )}
 }

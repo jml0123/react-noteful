@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 export default function NoteButton(props) {
     return(
-        <div className="note-button-wrapper">
-            <button>Delete Note</button>
-        </div>
+        <button className="button-wrapper--note" onClick={props.handleClick}>
+            <p>{props.label}</p>
+        </button>
     )
 }

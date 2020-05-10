@@ -3,9 +3,15 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-bottom: 1px solid black;
+    min-height: 150px;
 }
 
-nav a {
+button {
+    border: 0;
+}
+
+a {
     text-decoration:  none;
     color: inherit;
 }
@@ -15,3 +21,76 @@ nav h1 {
     color: black;
     font-weight: normal;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.App-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    width: 17%;
+    margin-right: 20px;
+    padding-top: 3vh;
+}
+
+.folder-name--notes {
+    text-align: right;
+    padding: 20px;
+    font-weight: normal;
+}
+
+.notes-collection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    padding-top: 3vh;
+}
+
+.note-wrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-bottom: 1em;
+    max-width: 900px;
+    width: 500px;
+    padding: 20px;
+}
+
+.note-data-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.folder-container {
+    border: 1px solid black;
+    text-align: center;
+}
+.folder--selected {
+    background: lightskyblue;
+}
+
+.button-wrapper--sidebar {
+    margin: 2.5%;
+    font-size: inherit;
+    border: 1px solid black;
+}
+
+.button-wrapper--note {
+    padding: 0 1em;
+    font-size: inherit;
+    border: 1px solid black;
+
+}
+
+
+
