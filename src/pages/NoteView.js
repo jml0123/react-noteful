@@ -11,7 +11,7 @@ export default function NoteView(props){
         <>
         <Note 
             name = {note.name}
-            nodeId = {note.id}
+            noteId = {note.id}
             key = {note.id}
             content = {note.content}
             metadata = {note.modified}
