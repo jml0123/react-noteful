@@ -1,24 +1,28 @@
-import React  from 'react';
+import React, {Component}  from 'react';
 import SidebarButton from "../components/SidebarButton/SidebarButton"
+import NotesContext from "../NotesContext"
 import { withRouter} from 'react-router-dom';
 
-import STORE from "../STORE"
-
-function SidebarNoteView(props){
+class SidebarNoteView extends Component {
     // noteID, folder id ==> folder name
-    const note = STORE.notes.find(note =>
-        note.id === props.match.params.noteId
-    )
-    const folder = STORE.folders.find(folder =>
-        note.folderId === folder.id
-    )
+    static contextType = NotesContext;
+    
+    render() {
+        const currentNote = this.context.notes.find(note => 
+            note.id === this.props.match.params.noteId)
 
-    return(
-        <>
-        <SidebarButton label="Go Back" handleClick = {()=> props.history.push('/')} />
-        <h1 className="folder-name--notes">{folder.name}</h1>
-        </>
-    )
+        const folder = this.context.folders.find(folder => 
+            currentNote.folderId === folder.id)
+        
+        return(
+            <>
+                <SidebarButton label="Go Back" handleClick = {()=> this.props.history.push('/')} />
+                <h1 className="folder-name--notes">{folder.name}</h1>
+            </>
+        )
+    }
 }
 
 export default withRouter(SidebarNoteView)
+
+//<h1 className="folder-name--notes">{folder.keys}</h1>

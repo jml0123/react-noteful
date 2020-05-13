@@ -1,25 +1,38 @@
-import React  from 'react';
+import React, {Component}  from 'react';
+import NotesContext from "../NotesContext"
 import Note from '../components/Note/Note';
 
-import STORE from "../STORE"
+class NoteView extends Component {
 
-export default function NoteView(props){
-    const note = STORE.notes.find(note =>
-        note.id === props.match.params.noteId
-    )
-    return(
-        <>
-        <Note 
-            name = {note.name}
-            noteId = {note.id}
-            key = {note.id}
-            content = {note.content}
-            metadata = {note.modified}
-            folderId = {note.folderId}
-        />
-        <p className="note-content">
-            {note.content}
-        </p>
-        </>
-    )
+    static contextType = NotesContext;
+    
+    handleDeleteNote = noteId => {
+        this.props.history.push('/')
+    }
+
+    render(){
+        const note = this.context.notes.find(note =>
+            note.id === this.props.match.params.noteId)
+
+        return(
+            <>
+            <Note 
+                name = {note.name}
+                noteId = {note.id}
+                key = {note.id}
+                content = {note.content}
+                metadata = {note.modified}
+                folderId = {note.folderId}
+                onDeleteNote = {this.handleDeleteNote}
+            />
+            <p className="note-content">
+                {note.content}
+            </p>
+       
+            </> 
+        )
+    }
 }
+
+export default NoteView
+
