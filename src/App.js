@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Nav from "./components/Nav/Nav"
 
 import SidebarList from "./components/SidebarList/SidebarList"
 import NoteList from "./components/NoteList/NoteList"
+import AddNote from "./components/AddNote/AddNote" // Should this be a page and stored in pages?
+import AddFolder from "./components/AddFolder/AddFolder" // Should this be a page and stored in pages?
 
 import NoteView from "./pages/NoteView"
 import SidebarNoteView from "./pages/SidebarNoteView"
@@ -61,6 +63,19 @@ class App extends Component {
         notes: newNotes
       })
     }
+    addNote = note => {
+      this.setState({
+        notes: [...this.state.notes, note]
+      })
+      console.log(this.state.notes)
+    }
+
+    addFolder = folder => {
+      this.setState({
+        folders: [...this.state.folders, folder]
+      })
+      console.log(this.state.folders)
+    }
     
 
     render(){
@@ -68,6 +83,8 @@ class App extends Component {
         notes: this.state.notes,
         folders: this.state.folders,
         deleteNote: this.deleteNote,
+        addNote: this.addNote,
+        addFolder: this.addFolder
       }
 
       return (
@@ -76,10 +93,11 @@ class App extends Component {
           <Nav />
             <div className="App-container">
               <div className="sidebar-container">
+              <Switch>
                 <Route
-                  exact path = "/"
+                  exact path={["/"]}
                   component={SidebarList}
-                />
+                 />
                 <Route
                   exact path = "/folder/:id"
                   render = {props =>
@@ -89,9 +107,12 @@ class App extends Component {
                   exact path = "/note/:noteId" 
                   component = {SidebarNoteView}
                 />
+                </Switch>
               </div>
               <div className = "notes-collection">
-                <Route exact path = "/" 
+                <Switch>
+                <Route 
+                  exact path = "/"
                   component = {NoteList}
                 />
                 <Route
@@ -102,6 +123,15 @@ class App extends Component {
                 <Route exact path = "/note/:noteId" 
                   component={NoteView} 
                 />
+                <Route 
+                  exact path ="/addnote"
+                  component={AddNote} 
+                />
+                <Route
+                  exact path="/addfolder"
+                  component={AddFolder} 
+                />
+                </Switch>
               </div>
             </div>
           </NotesContext.Provider>
@@ -111,3 +141,8 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+

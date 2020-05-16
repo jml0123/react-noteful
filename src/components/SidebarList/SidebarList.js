@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 import SidebarFolder from '../SidebarFolder/SidebarFolder'
 import SidebarButton from '../SidebarButton/SidebarButton';
@@ -23,7 +24,9 @@ export default class SidebarList extends Component {
         return (
             <>
                 {folderList}
-                <SidebarButton label="Add folder" handleClick={()=>{}}/>
+                <Link to="/addfolder">
+                    <SidebarButton label="Add folder" handleClick={()=>{}}/>
+                </Link>
             </>
         )
     }

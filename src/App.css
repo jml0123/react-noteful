@@ -85,7 +85,8 @@ main {
 }
 
 .button-wrapper--sidebar {
-    margin: 2.5%;
+    width: 100%;
+    margin: 2.5% auto;
     font-size: inherit;
     border: 1px solid black;
 }
@@ -98,4 +99,46 @@ main {
 }
 
 
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    width: 30vw;
+}
+
+form input {
+    margin: 10px;
+    min-height: 20px;
+    font-size: inherit;
+}
+
+form textarea {
+    min-height: 150px;
+    font-size: inherit;
+    padding: 5px;
+}
+select {
+    font-size: inherit;
+}
+.form-buttons button {
+    height: 50px;
+    border: 2px solid black;
+    min-width: 100px;
+    font-size: inherit;
+}
+
+.form-buttons{ 
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly
+}
+
+button:hover {
+    background: lightgrey;
+    cursor: pointer
+}
 

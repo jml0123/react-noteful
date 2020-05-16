@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import Note from "../Note/Note"
+import NoteButton from "../NoteButton/NoteButton"
 import NotesContext from "../../NotesContext"
 
 class NoteList extends Component {
@@ -33,6 +34,10 @@ class NoteList extends Component {
         )      
         return(
             <>
+                <Link to={'/addnote'}>
+                    <NoteButton label="Add Note" onClick = {this.context.addNote}/>
+                </Link>
+
                 {noteList}
             </>
         )
