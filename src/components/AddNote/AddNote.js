@@ -30,7 +30,7 @@ export default class AddNote extends Component {
 
     updateName(name) {
         this.setState({name: {value: name, touched: true}});
-        console.log(this.state.name)
+       
     }
       
 

@@ -63,14 +63,12 @@ class App extends Component {
       this.setState({
         notes: [...this.state.notes, note]
       })
-      console.log(this.state.notes)
     }
 
     addFolder = folder => {
       this.setState({
         folders: [...this.state.folders, folder]
       })
-      console.log(this.state.folders)
     }
     
 
