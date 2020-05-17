@@ -3,9 +3,6 @@ import ErrorBanner from "../ErrorBanner/ErrorBanner"
 import NotesContext from "../../NotesContext"
 import config from "../../config"
 
-
-import { findAllByTitle } from '@testing-library/react';
-
 export default class AddNote extends Component {
     static contextType = NotesContext;  
     state = {

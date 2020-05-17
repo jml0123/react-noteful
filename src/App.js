@@ -1,22 +1,16 @@
 import React, {Component} from 'react';
-import { Route, Switch } from 'react-router-dom'
-
+import { Route } from 'react-router-dom'
 import Nav from "./components/Nav/Nav"
-
 import SidebarList from "./components/SidebarList/SidebarList"
 import NoteList from "./components/NoteList/NoteList"
 import AddNote from "./components/AddNote/AddNote" // Should this be a page and stored in pages?
 import AddFolder from "./components/AddFolder/AddFolder" // Should this be a page and stored in pages?
-
-import NoteView from "./pages/NoteView"
-import SidebarNoteView from "./pages/SidebarNoteView"
 import NoteError from './components/NoteError/NoteError';
 import FolderError from './components/FolderError/FolderError'
-
+import NoteView from "./pages/NoteView"
+import SidebarNoteView from "./pages/SidebarNoteView"
 import NotesContext from "./NotesContext"
-
 import config from "./config"
-import STORE from "./STORE"
 import "./App.css"
 
 
