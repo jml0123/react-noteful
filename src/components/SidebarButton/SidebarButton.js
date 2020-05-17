@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function SidebarButton(props){
     return(
@@ -8,3 +9,10 @@ export default function SidebarButton(props){
     )
 }
 
+SidebarButton.defaultProps = {
+    label: "Click Here"
+}
+
+SidebarButton.propTypes = {
+    label: PropTypes.string.isRequired,
+}

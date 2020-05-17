@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
+import ErrorBanner from "../ErrorBanner/ErrorBanner"
 import NotesContext from "../../NotesContext"
 import config from "../../config"
 
-import PropTypes from 'prop-types';
+
 import { findAllByTitle } from '@testing-library/react';
-
-
-
-
 
 export default class AddNote extends Component {
     static contextType = NotesContext;  
     state = {
+        name: {
+            value: '',
+            touched: false
+        },
         error: null,
     };
 
@@ -22,6 +23,19 @@ export default class AddNote extends Component {
     generateUniqueID = () => {
         return '_' + Math.random().toString(36).substr(2, 9);
     }
+
+    invalidNoName() {
+        const name = this.state.name.value.trim();
+        if (name.length === 0) {
+          return true
+        }
+    }
+
+    updateName(name) {
+        this.setState({name: {value: name, touched: true}});
+        console.log(this.state.name)
+    }
+      
 
     handleSubmit = e => {
         e.preventDefault()
@@ -64,8 +78,8 @@ export default class AddNote extends Component {
             this.context.addNote(data)
             this.props.history.push('/')
         })
-        .catch(err =>
-            this.setState({err}))
+        .catch(error =>
+            this.setState({error}))
     };
   
 
@@ -89,7 +103,8 @@ export default class AddNote extends Component {
                         <div className="form-error" role="alert">
                             {this.state.error && <p>{this.state.error.message}</p>}
                         </div>
-                        <div>
+                        <div>                          
+                            {this.invalidNoName() && this.state.name.touched && (<ErrorBanner message="Please Enter a Note Name:"/>)}
                             <label htmlFor="name">
                                 Name
                                 {' '}
@@ -99,7 +114,8 @@ export default class AddNote extends Component {
                                 name="name"
                                 id="name"
                                 placeholder = "Buy tomatoes"
-                                required />
+                                onChange = {e => this.updateName(e.target.value)}
+                            />
                         </div>
                         <label htmlFor="content">What do you want to say? {' '}
                         </label>
@@ -113,7 +129,7 @@ export default class AddNote extends Component {
                             {folderSelections}
                         </select>
                         <div className='form-buttons'>
-                            <button type='submit'>
+                            <button type='submit' disabled={this.invalidNoName()}>
                             Add
                             </button>
                             <button type='button' onClick={this.handleClickCancel}>

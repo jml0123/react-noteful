@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 export default class SidebarFolder extends Component {
+
     render() {
         return(
             <NavLink to={`/folder/${this.props.id}`} activeClassName="folder--selected">
@@ -11,4 +13,9 @@ export default class SidebarFolder extends Component {
             </NavLink>
         )
     }
+}
+
+SidebarFolder.propTypes = {
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 }

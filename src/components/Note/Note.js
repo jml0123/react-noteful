@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
-
+import PropTypes from 'prop-types';
 import NoteButton from "../NoteButton/NoteButton"
 import NotesContext from "../../NotesContext"
-import config from "../../config"
-
 import getOrdinalTime from "../../utils/Date/OrdinalTime"
 import monthNames from "../../utils/Date/Months"
+import config from "../../config"
+
 
 export default class Note extends Component {
     static contextType = NotesContext
@@ -57,13 +57,8 @@ export default class Note extends Component {
         }
     }
 
-    /*      <NoteButton 
-                handleClick={handleDeleteNote(props.noteId, context.deleteNote)}
-                label="Delete Note" 
-            />
-            <button 
-                onClick={()=> handleDeleteNote(props.noteId, context.deleteNote)}    
-                        >Delete Note</button>
-
-    */
-
+    Note.propTypes = {
+        name: PropTypes.string.isRequired,
+        noteId: PropTypes.string.isRequired,
+        metadata: PropTypes.string.isRequired,
+    }

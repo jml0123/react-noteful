@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+
 import NotesContext from "../../NotesContext"
 import config from "../../config"
 
@@ -95,4 +95,3 @@ export default class AddFolder extends Component {
     }
 }
 
-// proptype

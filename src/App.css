@@ -16,6 +16,13 @@ button {
     border: 0;
 }
 
+
+button:hover {
+    background: lightgrey;
+    cursor: pointer
+}
+
+
 a {
     text-decoration:  none;
     color: inherit;
@@ -30,6 +37,31 @@ nav h1 {
 main {
     display: flex;
     flex-direction: column;
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    width: 30vw;
+}
+
+form input {
+    margin: 10px;
+    min-height: 20px;
+    font-size: inherit;
+}
+
+form textarea {
+    min-height: 150px;
+    font-size: inherit;
+    padding: 5px;
+}
+select {
+    font-size: inherit;
 }
 
 .App-container {
@@ -98,30 +130,22 @@ main {
 
 }
 
-
-
-form {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    justify-content: center;
-    width: 30vw;
+.error-wrapper {
+    background: lightpink;
+    right: 0;
+    height: auto;
+    margin: 5px;
+   
 }
 
-form input {
-    margin: 10px;
-    min-height: 20px;
-    font-size: inherit;
-}
-
-form textarea {
-    min-height: 150px;
-    font-size: inherit;
+.error-wrapper p {
     padding: 5px;
+    margin: 0;
+    color: darkred;
+
 }
-select {
-    font-size: inherit;
-}
+
+
 .form-buttons button {
     height: 50px;
     border: 2px solid black;
@@ -135,10 +159,5 @@ select {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly
-}
-
-button:hover {
-    background: lightgrey;
-    cursor: pointer
 }
 

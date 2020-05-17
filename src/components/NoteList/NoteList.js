@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import Note from "../Note/Note"
 import NoteButton from "../NoteButton/NoteButton"
 import NotesContext from "../../NotesContext"
+;
 
 class NoteList extends Component {
     static contextType = NotesContext;
@@ -19,16 +20,15 @@ class NoteList extends Component {
         if (this.props.folderActive) {
             notes = this.context.notes.filter(note => note.folderId === this.props.match.params.id)
         }
-     
+    
         const noteList = (notes).map(note => 
-            {return (
+            {
+                return (
                 <Note
                     name = {note.name}
                     noteId = {note.id}
                     key = {note.id}
-                    content = {note.content}
                     metadata = {note.modified}
-                    folderId = {note.folderId}
                 />
             )}
         )      
@@ -39,6 +39,7 @@ class NoteList extends Component {
                 </Link>
 
                 {noteList}
+
             </>
         )
     }

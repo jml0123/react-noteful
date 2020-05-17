@@ -10,6 +10,8 @@ import AddFolder from "./components/AddFolder/AddFolder" // Should this be a pag
 
 import NoteView from "./pages/NoteView"
 import SidebarNoteView from "./pages/SidebarNoteView"
+import NoteError from './components/NoteError/NoteError';
+import FolderError from './components/FolderError/FolderError'
 
 import NotesContext from "./NotesContext"
 
@@ -93,9 +95,8 @@ class App extends Component {
           <Nav />
             <div className="App-container">
               <div className="sidebar-container">
-              <Switch>
                 <Route
-                  exact path={["/"]}
+                  exact path= "/"
                   component={SidebarList}
                  />
                 <Route
@@ -107,22 +108,25 @@ class App extends Component {
                   exact path = "/note/:noteId" 
                   component = {SidebarNoteView}
                 />
-                </Switch>
               </div>
               <div className = "notes-collection">
-                <Switch>
-                <Route 
-                  exact path = "/"
-                  component = {NoteList}
-                />
-                <Route
-                  exact path = "/folder/:id"
-                  render = {props =>
-                    <NoteList folderActive={true} />}
-                />
-                <Route exact path = "/note/:noteId" 
-                  component={NoteView} 
-                />
+                <FolderError>
+                  <Route exact path = "/"
+                    component = {NoteList}
+                  />
+                </FolderError>
+                <FolderError>
+                  <Route
+                    exact path = "/folder/:id"
+                    render = {props =>
+                      <NoteList folderActive={true} />}
+                  />
+                </FolderError>
+                <NoteError>
+                  <Route exact path = "/note/:noteId" 
+                    component={NoteView} 
+                  />
+                </NoteError>
                 <Route 
                   exact path ="/addnote"
                   component={AddNote} 
@@ -131,7 +135,6 @@ class App extends Component {
                   exact path="/addfolder"
                   component={AddFolder} 
                 />
-                </Switch>
               </div>
             </div>
           </NotesContext.Provider>
