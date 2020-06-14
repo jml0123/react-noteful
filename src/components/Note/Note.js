@@ -15,8 +15,8 @@ export default class Note extends Component {
         onDeleteNote: () => {}
     } 
 
-    handleDeleteNote(noteId, callback) {
-        const fetchNotes = `${config.API_ENDPOINT}notes/${noteId}`;
+    handleDeleteNote(note_id, callback) {
+        const fetchNotes = `${config.API_ENDPOINT}notes/${note_id}`;
     
         fetch(fetchNotes, {method: 'DELETE', body: {'Content-Type': 'application/json'}
         })
@@ -26,11 +26,11 @@ export default class Note extends Component {
                     throw error
                 })
             }
-            return res.json()
+            return res
         })
         .then(data => {
-            this.props.onDeleteNote(noteId)
-            callback(noteId)
+            this.props.onDeleteNote(note_id)
+            callback(note_id)
         })
         .catch(err => {
             console.error(err)
@@ -59,6 +59,6 @@ export default class Note extends Component {
 
     Note.propTypes = {
         name: PropTypes.string.isRequired,
-        noteId: PropTypes.string.isRequired,
+        noteId: PropTypes.number.isRequired,
         metadata: PropTypes.string.isRequired,
     }

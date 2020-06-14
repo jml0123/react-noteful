@@ -43,10 +43,10 @@ export default class AddNote extends Component {
         const { name, content, folder } = e.target;
 
         const note = {
-            id: noteId,
-            name: name.value,
-            modified: noteCreated,
-            folderId: folder.value,
+             //id: noteId,
+            note_name: name.value,
+            // modified: noteCreated,
+            folder_id: folder.value,
             content: content.value
         }
         this.setState({error: null})
@@ -68,9 +68,9 @@ export default class AddNote extends Component {
         })
         .then(data => {
             note.id = ""
-            note.name = ""
-            note.modified = ""
-            note.folderId =""
+            note.note_name = ""
+            note.date_modified = ""
+            note.folder_id =""
             note.content = ""
             this.context.addNote(data)
             this.props.history.push('/')
@@ -88,7 +88,7 @@ export default class AddNote extends Component {
 
         const folderSelections = this.context.folders.map(folder => {
             return (
-                <option key = {folder.id} value={folder.id}>{folder.name}</option>
+                <option key = {folder.id} value={folder.id}>{folder.folder_name}</option>
             )
         })
         return(

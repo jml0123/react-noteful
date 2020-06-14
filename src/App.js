@@ -26,6 +26,7 @@ class App extends Component {
       this.setState({
         notes, folders
       })
+      //sets state of notes and folders based on request
     }
 
     componentDidMount(){
@@ -46,7 +47,7 @@ class App extends Component {
           return res.json()
         }),
       ]).then((res) => {
-        this.setData(res[0], res[1])
+        this.setData(res[0], res[1]) // calls back to setData Function
       })
       .catch(error => this.setState({error}))
     }
@@ -92,12 +93,12 @@ class App extends Component {
                   component={SidebarList}
                  />
                 <Route
-                  exact path = "/folder/:id"
+                  exact path = "/folder/:folder_id"
                   render = {props =>
                     <SidebarList folderActive={true} />}
                 />
                 <Route
-                  exact path = "/note/:noteId" 
+                  exact path = "/note/:note_id" 
                   component = {SidebarNoteView}
                 />
               </div>
@@ -109,13 +110,13 @@ class App extends Component {
                 </FolderError>
                 <FolderError>
                   <Route
-                    exact path = "/folder/:id"
+                    exact path = "/folder/:folder_id"
                     render = {props =>
                       <NoteList folderActive={true} />}
                   />
                 </FolderError>
                 <NoteError>
-                  <Route exact path = "/note/:noteId" 
+                  <Route exact path = "/note/:note_id" 
                     component={NoteView} 
                   />
                 </NoteError>

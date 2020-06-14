@@ -19,11 +19,11 @@ export default class AddFolder extends Component {
         e.preventDefault();
         const { folderName } = e.target;
 
-        const folderId = this.generateUniqueID();
+        // const folderId = this.generateUniqueID();
 
         const folder = {
-            id: folderId,
-            name: folderName.value
+            //id: folderId,
+            folder_name: folderName.value
         }
         this.setState({error: null})
         fetch(`${config.API_ENDPOINT}folders`, {
@@ -44,7 +44,7 @@ export default class AddFolder extends Component {
         })
         .then(data => {
             folder.id = ""
-            folder.name = ""
+            folder.folder_name = ""
             this.context.addFolder(data)
             this.props.history.push('/')
         })

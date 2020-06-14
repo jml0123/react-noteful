@@ -17,8 +17,8 @@ export default class SidebarList extends Component {
 
         const folderList = folders.map(folder => 
         <SidebarFolder 
-            name = {folder.name}
-            id = {folder.id}
+            name = {folder.folder_name}
+            id = {(folder.id).toString()}
             key = {folder.id}
         />)
         return (

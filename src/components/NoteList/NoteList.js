@@ -15,20 +15,21 @@ class NoteList extends Component {
 
 
     render(){
+  
         let { notes } = this.context;
 
         if (this.props.folderActive) {
-            notes = this.context.notes.filter(note => note.folderId === this.props.match.params.id)
+            notes = this.context.notes.filter(note => note.folder_id == this.props.match.params.folder_id)
         }
     
         const noteList = (notes).map(note => 
             {
                 return (
                 <Note
-                    name = {note.name}
+                    name = {note.note_name}
                     noteId = {note.id}
                     key = {note.id}
-                    metadata = {note.modified}
+                    metadata = {note.date_modified}
                 />
             )}
         )      

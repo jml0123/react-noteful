@@ -13,18 +13,22 @@ class NoteView extends Component {
     }
 
     render(){
-        const note = this.context.notes.find(note =>
-            note.id === this.props.match.params.noteId)
+        let { notes } = this.context;
 
+        const note = this.context.notes.find(note =>
+            note.id == this.props.match.params.note_id
+        )
+
+        //console.log(note)
         return(
             <>
                 <Note 
-                    name = {note.name}
+                    name = {note.note_name}
                     noteId = {note.id}
                     key = {note.id}
                     content = {note.content}
-                    metadata = {note.modified}
-                    folderId = {note.folderId}
+                    metadata = {note.date_modified}
+                    folderId = {note.folder_id}
                     onDeleteNote = {this.handleDeleteNote}
                 />
                 <p className="note-content">
@@ -35,6 +39,6 @@ class NoteView extends Component {
     }
 }
 
-
+//
 
 export default NoteView
